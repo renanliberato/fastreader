@@ -17,17 +17,17 @@ export default (current = INITIAL_STATE, action) => {
         case GO_TO_BOOKMARK:
             return action.bookmark
         case BACKWARD:
-            var newCurrent = current - 10;
-            if (newCurrent < 0) {
-                newCurrent = 0;
+            var backCurrent = current - 10;
+            if (backCurrent < 0) {
+                backCurrent = 0;
             }
-            return newCurrent
+            return backCurrent
         case FORWARD:
-            var newCurrent = current + 10;
-            if (newCurrent >= action.length) {
-                newCurrent = action.length - 1;
+            var forwardCurrent = current + 10;
+            if (forwardCurrent >= action.length) {
+                forwardCurrent = action.length - 1;
             }
-            return newCurrent
+            return forwardCurrent
         case RESET:
             return 0;
         default:
