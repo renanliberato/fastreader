@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid'
+import React, { Component } from 'react'
+import { Row, Col } from 'react-flexbox-grid'
 
 import { connect } from 'react-redux'
 
-import Bookmark from '../../components/button/bookmark';
-import BookmarkCollection from '../../components/button/bookmarkcollection';
+import Bookmark from '../../components/button/bookmark'
+import BookmarkCollection from '../../components/button/bookmarkcollection'
 
 import { bookmarkAction, goToBookmarkAction } from '../../actions/reader/bookmark'
 
