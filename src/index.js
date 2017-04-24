@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import ReduxPromise from 'redux-promise'
 import {compose, applyMiddleware, createStore} from 'redux'
 import {persistStore, autoRehydrate} from 'redux-persist'
 
@@ -12,7 +11,6 @@ const store = createStore(
   reducers,
   undefined,
   compose(
-    applyMiddleware(ReduxPromise),
     autoRehydrate()
   )
 )
