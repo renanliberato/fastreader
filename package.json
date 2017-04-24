@@ -7,12 +7,10 @@
   },
   "dependencies": {
     "material-ui": "^0.17.4",
-    "pdf-to-text": "^0.0.6",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-flexbox-grid": "^1.0.2",
     "react-redux": "^5.0.4",
-    "react-router": "^4.1.1",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-persist": "^4.6.0"
