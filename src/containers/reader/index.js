@@ -2,21 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import Badge from 'material-ui/Badge'
-import LinearProgress from 'material-ui/LinearProgress'
+
 import Paper from 'material-ui/Paper'
 import Slider from 'material-ui/Slider'
 
-import Forward10 from '../../components/button/forward10'
-import Play from '../../components/button/play'
-import Replay10 from '../../components/button/replay10'
-import Importer from './importer'
-
 import BookmarkMenu from './bookmarkmenu'
+import Importer from './importer'
+import PlayMenu from './playmenu'
+import ReaderBox from './readerbox'
 
 import { passAction } from '../../actions/reader/pass'
-import { resetAction } from '../../actions/reader/reset'
-import { backwardAction } from '../../actions/reader/backward'
-import { forwardAction } from '../../actions/reader/forward'
 import { speedAction } from '../../actions/reader/speed'
 
 class Reader extends Component {
@@ -25,8 +20,6 @@ class Reader extends Component {
         super(props)
         this.state = {passing : false, readingProcess : null}
         this.toggle = this.toggle.bind(this)
-        this.goBackward = this.goBackward.bind(this)
-        this.goForward = this.goForward.bind(this)
         this.onChangeSpeed = this.onChangeSpeed.bind(this)
         this.startReading = this.startReading.bind(this)
         this.stopReading = this.stopReading.bind(this)
@@ -36,18 +29,10 @@ class Reader extends Component {
         if (!this.state.passing) {
             this.startReading()
         } else {
-            this.stopReading();
+            this.stopReading()
         }
 
         this.setState({passing : !this.state.passing})
-    }
-
-    goBackward() {
-        this.props.backwardAction(this.props.list.length, this.props.current)
-    }
-
-    goForward() {
-        this.props.forwardAction(this.props.list.length, this.props.current)
     }
 
     onChangeSpeed(event, newValue) {
@@ -96,35 +81,8 @@ class Reader extends Component {
                         <Row style={{marginTop: '20px'}}>
                             <Col xs={12}>
                                 <Paper zDepth={3}>
-                                    
-                                    <Row center='xs' middle='xs' style={{height: '150px'}}>
-                                        <Col xs={12} style={{
-                                            fontSize: '60px',
-                                            marginTop: '50px'
-                                        }}>
-                                            {this.props.list[this.props.current]}
-                                        </Col>
-                                        <Col xs={10}>
-                                            <LinearProgress
-                                                mode="determinate"
-                                                min={0}
-                                                max={this.props.list.length - 1}
-                                                value={this.props.current}/>
-                                        </Col>
-                                    </Row>
-                                    <Row style={{
-                                        paddingBottom: '20px'
-                                    }}>
-                                        <Col xs>
-                                            <Replay10 onTouchTap={this.goBackward}/>
-                                        </Col>
-                                        <Col xs>
-                                            <Play passing={this.state.passing} onTouchTap={this.toggle} />
-                                        </Col>
-                                        <Col xs>
-                                            <Forward10 onTouchTap={this.goForward} />
-                                        </Col>
-                                    </Row>
+                                    <ReaderBox toggle={this.toggle} />
+                                    <PlayMenu passing={this.state.passing} toggle={this.toggle} />
                                 </Paper>
                             </Col>
                         </Row>
@@ -145,10 +103,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        backwardAction: (current) => dispatch(backwardAction(current)),
-        forwardAction: (current) => dispatch(forwardAction(current)),
         passAction: (length) => dispatch(passAction(length)),
-        resetAction: () => dispatch(resetAction()),
         speedAction: (speed) => dispatch(speedAction(speed)),
     }
 }
