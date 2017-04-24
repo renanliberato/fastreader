@@ -6,9 +6,10 @@ import LinearProgress from 'material-ui/LinearProgress'
 import Paper from 'material-ui/Paper'
 import Slider from 'material-ui/Slider'
 
-import Forward10 from '../../components/button/forward10';
-import Play from '../../components/button/play';
-import Replay10 from '../../components/button/replay10';
+import Forward10 from '../../components/button/forward10'
+import Play from '../../components/button/play'
+import Replay10 from '../../components/button/replay10'
+import Importer from './importer'
 
 import BookmarkMenu from './bookmarkmenu'
 
@@ -81,9 +82,14 @@ class Reader extends Component {
                                 <Slider
                                     min={0}
                                     max={1}
-                                    defaultValue={this.props.speed / 10}
+                                    value={this.props.speed / 10}
                                     step={0.1}
                                     onChange={this.onChangeSpeed} />
+                            </Col>
+                        </Row>
+                        <Row end='xs'>
+                            <Col xs={12}>
+                                <Importer />
                             </Col>
                         </Row>
                         <BookmarkMenu />
