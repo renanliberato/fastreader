@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import { Row, Col } from 'react-flexbox-grid'
 import { connect } from 'react-redux'
 
 import LinearProgress from 'material-ui/LinearProgress'
@@ -8,21 +7,21 @@ import LinearProgress from 'material-ui/LinearProgress'
 class ReaderBox extends Component {
     render() {
         return (
-            <Row center='xs' middle='xs' style={{height: '150px'}}>
-                <Col xs={12} style={{
+            <div className='row center-xs middle-xs' style={{height: '150px'}}>
+                <div className='col-xs-12' style={{
                     fontSize: '60px',
                     marginTop: '50px'
                 }}>
                     {this.props.list[this.props.current]}
-                </Col>
-                <Col xs={10}>
+                </div>
+                <div className='col-xs-10'>
                     <LinearProgress
                         mode="determinate"
                         min={0}
                         max={this.props.list.length - 1}
                         value={this.props.current}/>
-                </Col>
-            </Row>
+                </div>
+            </div>
         )
     }
 }

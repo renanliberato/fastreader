@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Grid, Row, Col } from 'react-flexbox-grid'
 import Badge from 'material-ui/Badge'
-
 import Paper from 'material-ui/Paper'
 import Slider from 'material-ui/Slider'
 
@@ -58,11 +56,11 @@ class Reader extends Component {
 
     render() {
         return (
-            <Grid>
-                <Row around="xs" center='xs'>
-                    <Col xs={10} sm={6}>
-                        <Row end='xs'>
-                            <Col xs={12}>
+            <div>
+                <div className='row center-xs'>
+                    <div className='col-xs-10 col-sm-6'>
+                        <div className='end-xs'>
+                            <div className='col-xs-12'>
                             <Badge badgeContent={this.props.speed} primary={true}> Words per second</Badge>
                                 <Slider
                                     min={0}
@@ -70,25 +68,25 @@ class Reader extends Component {
                                     value={this.props.speed / 10}
                                     step={0.1}
                                     onChange={this.onChangeSpeed} />
-                            </Col>
-                        </Row>
-                        <Row end='xs'>
-                            <Col xs={12}>
+                            </div>
+                        </div>
+                        <div className='row end-xs'>
+                            <div className='col-xs-12'>
                                 <Importer />
-                            </Col>
-                        </Row>
+                            </div>
+                        </div>
                         <BookmarkMenu />
-                        <Row style={{marginTop: '20px'}}>
-                            <Col xs={12}>
+                        <div className='row' style={{marginTop: '20px'}}>
+                            <div className='col-xs-12'>
                                 <Paper zDepth={3}>
                                     <ReaderBox toggle={this.toggle} />
                                     <PlayMenu passing={this.state.passing} toggle={this.toggle} />
                                 </Paper>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-            </Grid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     }
 }

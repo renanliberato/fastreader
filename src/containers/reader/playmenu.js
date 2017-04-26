@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux'
-import { Row, Col } from 'react-flexbox-grid'
 
 import { resetAction } from '../../actions/reader/reset'
 import { backwardAction } from '../../actions/reader/backward'
@@ -30,19 +29,19 @@ class PlayMenu extends Component {
 
     render() {
         return (
-            <Row style={{
+            <div className='row' style={{
                 paddingBottom: '20px'
             }}>
-                <Col xs>
+                <div className='col-xs'>
                     <Replay10 onTouchTap={this.goBackward}/>
-                </Col>
-                <Col xs>
+                </div>
+                <div className='col-xs'>
                     <Play passing={this.props.passing} onTouchTap={this.props.toggle} />
-                </Col>
-                <Col xs>
+                </div>
+                <div className='col-xs'>
                     <Forward10 onTouchTap={this.goForward} />
-                </Col>
-            </Row>
+                </div>
+            </div>
         )
     }
 }

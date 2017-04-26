@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Row, Col } from 'react-flexbox-grid'
 
 import { connect } from 'react-redux'
 
@@ -26,17 +25,17 @@ class BookmarkMenu extends Component {
 
     render() {
         return (
-            <Row end='xs' style={{
+            <div className='row end-xs' style={{
                 paddingTop : '20px',
                 paddingRight : '30px'
             }}>
-                <Col xs={3} md={2}>
+                <div className='col-xs-3 col-md-2'>
                     <BookmarkCollection onTouchTap={this.addBookmark}/>
-                </Col>
-                <Col xs={3} md={2}>
+                </div>
+                <div className='col-xs-3 col-md-2'>
                     <Bookmark onTouchTap={this.goToBookmark} />
-                </Col>
-            </Row>
+                </div>
+            </div>
         )
     }
 }
