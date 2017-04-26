@@ -5,6 +5,7 @@ import Paper from 'material-ui/Paper'
 import Slider from 'material-ui/Slider'
 
 import BookmarkMenu from './bookmarkmenu'
+import Footer from '../../components/footer';
 import Importer from './importer'
 import PlayMenu from './playmenu'
 import ReaderBox from './readerbox'
@@ -118,6 +119,7 @@ class Reader extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         )
     }
