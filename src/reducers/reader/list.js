@@ -1,7 +1,7 @@
 import { LIST_WORDS } from '../../actions/reader/list';
 
 let INITIAL_STATE = [
-    'Olá','a','todos!','Eu','tenho','53','anos.','Nasci','no','interior','de','Minas','Gerais,','na','casa','dos','meus','avós','maternos,','zona','rural','da','cidade','de','Aimorés,','MG,','fronteira','com','Baixo','Guandú,','ES.'
+    'Clique', 'no', 'botão', '+', 'no', 'canto', 'superior', 'direito', 'para', 'inserir', 'um', 'texto.'
 ]
 
 export default (words = INITIAL_STATE, action) => {
