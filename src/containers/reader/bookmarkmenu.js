@@ -7,6 +7,12 @@ import BookmarkCollection from '../../components/button/bookmarkcollection'
 
 import { bookmarkAction, goToBookmarkAction } from '../../actions/reader/bookmark'
 
+import ReactGA from 'react-ga'
+ReactGA.initialize('UA-75537711-6', {
+  debug: false,
+  titleCase: false,
+});
+
 class BookmarkMenu extends Component {
 
     constructor(props) {
@@ -16,10 +22,24 @@ class BookmarkMenu extends Component {
     }
 
     addBookmark() {
+        ReactGA.event({
+            category: 'Reader',
+            action: 'Add Bookmark',
+            label: 'Added a bookmark',
+            value: this.props.current
+        });
+
         this.props.bookmarkAction(this.props.current)
     }
 
     goToBookmark() {
+        ReactGA.event({
+            category: 'Reader',
+            action: 'Go To Bookmark',
+            label: 'Went to the bookmark',
+            value: this.props.current
+        });
+
         this.props.goToBookmarkAction(this.props.bookmark)
     }
 

@@ -12,6 +12,12 @@ import { bookmarkAction } from '../../actions/reader/bookmark'
 import { listWordAction } from '../../actions/reader/list'
 import { resetAction } from '../../actions/reader/reset'
 
+import ReactGA from 'react-ga'
+ReactGA.initialize('UA-75537711-6', {
+  debug: false,
+  titleCase: false,
+});
+
 class Importer extends Component {
 
     constructor(props) {
@@ -24,6 +30,8 @@ class Importer extends Component {
     }
 
     handleOpen() {
+        ReactGA.modalview('/importer');
+
         this.setState({
             open: true,
             preparedList : this.props.list.join(' ')
@@ -31,17 +39,37 @@ class Importer extends Component {
     }
 
     handleClear() {
+        ReactGA.event({
+            category: 'Reader',
+            action: 'Clear Importer',
+            label: 'Cleared the importer field',
+        });
+
         this.setState({
             preparedList : '',
         })
     }
 
     handleClose() {
+        ReactGA.event({
+            category: 'Reader',
+            action: 'Close Importer',
+            label: 'Closed the importer modal',
+        });
+
         this.setState({open: false})
     }
 
     handleSubmit() {
-        this.props.listWordAction(this.state.preparedList.split(' '))
+        var spllitedPreparedList = this.state.preparedList.split(' ');
+        ReactGA.event({
+            category: 'Reader',
+            action: 'Submit Importer',
+            label: 'Submitted the importer modal',
+            value: spllitedPreparedList.length
+        });
+
+        this.props.listWordAction(spllitedPreparedList)
         this.handleClose()
     }
 

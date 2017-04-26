@@ -12,6 +12,12 @@ import ReaderBox from './readerbox'
 import { passAction } from '../../actions/reader/pass'
 import { speedAction } from '../../actions/reader/speed'
 
+import ReactGA from 'react-ga'
+ReactGA.initialize('UA-75537711-6', {
+  debug: false,
+  titleCase: false,
+});
+
 class Reader extends Component {
 
     constructor(props) {
@@ -23,10 +29,16 @@ class Reader extends Component {
         this.stopReading = this.stopReading.bind(this)
     }
 
+    componentWillMount() {
+        ReactGA.pageview('/');
+    }
+
     toggle() {
         if (!this.state.passing) {
+            
             this.startReading()
         } else {
+            
             this.stopReading()
         }
 
@@ -34,11 +46,24 @@ class Reader extends Component {
     }
 
     onChangeSpeed(event, newValue) {
+        ReactGA.event({
+            category: 'Reader',
+            action: 'Changed speed',
+            label: 'Started reading',
+            value: newValue * 10,
+        });
         // Transforma 0.1 do slider em 1 'palavra'
         this.props.speedAction(Math.floor(newValue * 10))
     }
 
     startReading() {
+        ReactGA.event({
+            category: 'Reader',
+            action: 'Start Reading',
+            label: 'Started reading',
+            value: this.props.current,
+        });
+        
         var readingProcess = setInterval(() => {
             //Cheguei à última palavra
             if (this.props.current === this.props.list.length - 1) {
@@ -51,6 +76,13 @@ class Reader extends Component {
     }
     
     stopReading() {
+        ReactGA.event({
+            category: 'Reader',
+            action: 'Stop Reading',
+            label: 'Stopped reading',
+            value: this.props.current,
+        });
+
         clearInterval(this.state.readingProcess)
     }
 

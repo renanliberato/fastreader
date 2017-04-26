@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import IconButton from 'material-ui/IconButton'
 
+import ReactGA from 'react-ga'
+
 export default class Bookmark extends Component {
     render() {
         return (

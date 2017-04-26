@@ -10,6 +10,12 @@ import Forward10 from '../../components/button/forward10'
 import Play from '../../components/button/play'
 import Replay10 from '../../components/button/replay10'
 
+import ReactGA from 'react-ga'
+ReactGA.initialize('UA-75537711-6', {
+  debug: false,
+  titleCase: false,
+});
+
 class PlayMenu extends Component {
 
     constructor(props) {
@@ -20,10 +26,24 @@ class PlayMenu extends Component {
 
 
     goBackward() {
+        ReactGA.event({
+            category: 'Reader',
+            action: 'Backward 10 seconds',
+            label: 'Backward 10 seconds',
+            value: this.props.current,
+        });
+
         this.props.backwardAction(this.props.list.length, this.props.current)
     }
 
     goForward() {
+        ReactGA.event({
+            category: 'Reader',
+            action: 'Forward 10 seconds',
+            label: 'Forward 10 seconds',
+            value: this.props.current,
+        });
+
         this.props.forwardAction(this.props.list.length, this.props.current)
     }
 

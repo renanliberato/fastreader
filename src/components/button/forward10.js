@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import IconButton from 'material-ui/IconButton'
 
+import ReactGA from 'react-ga'
+
 export default class Forward10 extends Component {
     render() {
         return (
