@@ -12,7 +12,7 @@ class ReaderBox extends Component {
                     fontSize: '60px',
                     marginTop: '50px'
                 }}>
-                    {this.props.list[this.props.current]}
+                    {`${this.props.list[this.props.current - 2]} ${this.props.list[this.props.current - 1]} ${this.props.list[this.props.current]}`}
                 </div>
                 <div className='col-xs-10'>
                     <LinearProgress

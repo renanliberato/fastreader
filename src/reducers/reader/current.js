@@ -9,8 +9,8 @@ let INITIAL_STATE = 0;
 export default (current = INITIAL_STATE, action) => {
     switch (action.type) {
         case PASS:
-            current++;
-            if (current >= action.length) {
+            current = current + 3;
+            if (current >= action.length - 2) {
                 current = action.length - 1;
             }
             return current;
@@ -18,8 +18,8 @@ export default (current = INITIAL_STATE, action) => {
             return action.bookmark
         case BACKWARD:
             var backCurrent = current - 10;
-            if (backCurrent < 0) {
-                backCurrent = 0;
+            if (backCurrent < 2) {
+                backCurrent = 2;
             }
             return backCurrent
         case FORWARD:
